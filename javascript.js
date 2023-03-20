@@ -33,15 +33,20 @@ function Operate(operator, number1, number2)
 }
 
 const calculatorInput = document.querySelector('.calculator-display');
-
+let firstInputValue = true;
 function Input(button)
 {
     let input = calculatorInput.innerHTML;
+    if(firstInputValue === true)
+    {
+        input = '';
+        firstInputValue = false;
+    }
     // evaluate the calculator display as a number and then change it back to a string
     // has problems with number then . then more than 1 zero
     // Maybe use regex ^[0-9]*\.?[0-9]*$
-    if(input.charAt(input.length-1) != '.')
-        input = Number(calculatorInput.innerHTML).toString();
+    // if(input.charAt(input.length-1) != '.')
+    //     input = Number(calculatorInput.innerHTML).toString();
 
     if(button === '1')
         input += '1';
@@ -65,14 +70,17 @@ function Input(button)
         input += '0';
     // Need a flag so only 1 dot allowed
     if(button === '.')
-        if(!input.includes('.'))
-            input += '.';
+        input += '.';
     // Minus needs to change the number from + to -
     if(button === '-')
         if(input.includes('-'))
             input = input.slice(1);
         else
             input = '-' + input;
+    
+    let regexValidation = new RegExp("^-?[0-9?]*\.?[0-9?]*$");
+    if(regexValidation.test(input) === false)
+        return;
 
     calculatorInput.innerHTML = input;
 }
