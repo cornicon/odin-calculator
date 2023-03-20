@@ -131,5 +131,12 @@ function HandleOperator(opButton)
         calcOperator = 'multiply';
         isFirstInput = true;
     }
+
+    if(opButton === 'divide')
+    {   
+        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcOperator = 'divide';
+        isFirstInput = true;
+    }
         
 }
