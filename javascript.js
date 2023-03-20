@@ -106,6 +106,11 @@ function HandleOperator(opButton)
         calculatorInput.innerHTML = calcNumber1.toString();
     }
 
+    if(opButton === 'equals')
+    {
+        isFirstInput = true;
+    }
+
     if(opButton === 'add')
     {   
         calcNumber1 = Number(calculatorInput.innerHTML);
