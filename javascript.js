@@ -96,13 +96,21 @@ function Clear()
     calcOperator = ''
 }
 
-function HandleOperand(opButton)
+function HandleOperator(opButton)
 {
-    if(opButton === '+')
+    if(calcOperator != '') // if pending operation
     {
+        let calcNumber2 = Number(calculatorInput.innerHTML);
+        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
+        calcOperator = '';
+        calculatorInput.innerHTML = calcNumber1.toString();
+    }
+
+    if(opButton === 'add')
+    {   
         calcNumber1 = Number(calculatorInput.innerHTML);
-        calcOperator = '+';
-        calculatorInput.innerHTML = '0';
+        calcOperator = 'add';
+        isFirstInput = true;
     }
         
 }
