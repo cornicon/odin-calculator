@@ -117,5 +117,12 @@ function HandleOperator(opButton)
         calcOperator = 'add';
         isFirstInput = true;
     }
+
+    if(opButton === 'sub')
+    {   
+        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcOperator = 'subtract';
+        isFirstInput = true;
+    }
         
 }
