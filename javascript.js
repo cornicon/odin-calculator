@@ -118,10 +118,17 @@ function HandleOperator(opButton)
         isFirstInput = true;
     }
 
-    if(opButton === 'sub')
+    if(opButton === 'subtract')
     {   
         calcNumber1 = Number(calculatorInput.innerHTML);
         calcOperator = 'subtract';
+        isFirstInput = true;
+    }
+
+    if(opButton === 'multiply')
+    {   
+        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcOperator = 'multiply';
         isFirstInput = true;
     }
         
