@@ -33,17 +33,17 @@ function Operate(operator, number1, number2)
 }
 
 const calculatorInput = document.querySelector('.calculator-display');
-let firstInputValue = true;
+let isFirstInput = true;
 let calcNumber1 = 0;
 let calcOperator = '';
 
 function Input(button)
 {
     let input = calculatorInput.innerHTML;
-    if(firstInputValue === true)
+    if(isFirstInput === true)
     {
         input = '';
-        firstInputValue = false;
+        isFirstInput = false;
     }
     // evaluate the calculator display as a number and then change it back to a string
     // has problems with number then . then more than 1 zero
@@ -90,9 +90,10 @@ function Input(button)
 
 function Clear()
 {
+    isFirstInput = true;
     calculatorInput.innerHTML = 0;
-    calcNumber1 = 0;
-    calcOperator = '';
+    calcNumber1 = '0';
+    calcOperator = ''
 }
 
 function HandleOperand(opButton)
