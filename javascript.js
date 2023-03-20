@@ -34,6 +34,9 @@ function Operate(operator, number1, number2)
 
 const calculatorInput = document.querySelector('.calculator-display');
 let firstInputValue = true;
+let calcNumber1 = 0;
+let calcOperator = '';
+
 function Input(button)
 {
     let input = calculatorInput.innerHTML;
@@ -83,4 +86,22 @@ function Input(button)
         return;
 
     calculatorInput.innerHTML = input;
+}
+
+function Clear()
+{
+    calculatorInput.innerHTML = 0;
+    calcNumber1 = 0;
+    calcOperator = '';
+}
+
+function HandleOperand(opButton)
+{
+    if(opButton === '+')
+    {
+        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcOperator = '+';
+        calculatorInput.innerHTML = '0';
+    }
+        
 }
