@@ -1,0 +1,15 @@
+.calculator-container {
+    width: 400px;
+    padding: 5px;
+    background-color: lightgrey;   
+}
+
+.calculator-display {
+    padding: 5px;
+    text-align: right;
+    background-color: white;
+}
+
+.calculator-main {
+    padding-top: 5px;
+}
