@@ -34,7 +34,8 @@ function Operate(operator, number1, number2)
 
 const calculatorInput = document.querySelector('.calculator-display');
 let isFirstInput = true;
-let calcNumber1 = 0;
+let calcNumber1 = '';
+let calcNumber2 = '';
 let calcOperator = '';
 
 function Input(button)
@@ -114,7 +115,8 @@ function Clear()
 {
     isFirstInput = true;
     calculatorInput.innerHTML = 0;
-    calcNumber1 = '0';
+    calcNumber1 = '';
+    calcNumber2 = '';
     calcOperator = ''
 }
 
@@ -133,49 +135,46 @@ function HandleOperator(opButton)
 
     if(opButton === 'equals')
     {
-        let calcNumber2 = Number(calculatorInput.innerHTML);
+        if(calcNumber1 === '')
+            calcNumber1 = Number(calculatorInput.innerHTML);
         if(calcOperator != '')
         {
-            calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
-            calculatorInput.innerHTML = calcNumber1.toString();
+            calcNumber2 = Operate(calcOperator, calcNumber2, calcNumber1);
+            calculatorInput.innerHTML = calcNumber2.toString();
         }
-        isFirstInput = true;
-    }
-
-    else if(calcOperator != '')
-    {
-        let calcNumber2 = Number(calculatorInput.innerHTML);
-        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
-        calculatorInput.innerHTML = calcNumber1.toString();
         isFirstInput = true;
     }
 
     if(opButton === 'add')
     {   
-        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcNumber2 = Number(calculatorInput.innerHTML);
         calcOperator = 'add';
         isFirstInput = true;
+        calcNumber1 = '';
     }
 
     if(opButton === 'subtract')
     {   
-        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcNumber2 = Number(calculatorInput.innerHTML);
         calcOperator = 'subtract';
         isFirstInput = true;
+        calcNumber1 = '';
     }
 
     if(opButton === 'multiply')
     {   
-        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcNumber2 = Number(calculatorInput.innerHTML);
         calcOperator = 'multiply';
         isFirstInput = true;
+        calcNumber1 = '';
     }
 
     if(opButton === 'divide')
     {   
-        calcNumber1 = Number(calculatorInput.innerHTML);
+        calcNumber2 = Number(calculatorInput.innerHTML);
         calcOperator = 'divide';
         isFirstInput = true;
+        calcNumber1 = '';
     }
-        
+    
 }
