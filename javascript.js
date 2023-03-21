@@ -106,6 +106,13 @@ function HandleOperator(opButton)
         calculatorInput.innerHTML = calcNumber1.toString();
     }
 
+    if(opButton === 'delete')
+    {
+        //remove the last character in the string
+        let input = calculatorInput.innerHTML;
+        calculatorInput.innerHTML = input.substring(0, input.length-1);
+    }
+
     if(opButton === 'equals')
     {
         isFirstInput = true;
