@@ -176,5 +176,29 @@ function HandleOperator(opButton)
         isFirstInput = true;
         calcNumber1 = '';
     }
-    
 }
+
+document.addEventListener('keydown', (event) => {
+    var name = event.key;
+    //var code = event.code;
+    let regExDigits = new RegExp("[0-9.]");
+    if(regExDigits.test(name))
+        Input(name);
+    else if(name === 'Backspace')
+        HandleOperator('delete');
+    else if(name === 'add')
+        HandleOperator('+');
+    else if(name === 'subtract')
+        HandleOperator('-');
+    else if(name === 'multiply')
+        HandleOperator('*');
+    else if(name === 'divide')
+        HandleOperator('/')
+    else if(name === '=')
+        HandleOperator('equal');
+    else if(name === 'Escape')
+        Clear();
+    //alert(name);
+    // Need to look into Event.preventDefault().
+    // Something blocking +-/*=
+});
