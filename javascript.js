@@ -40,6 +40,31 @@ let calcOperator = '';
 function Input(button)
 {
     let input = calculatorInput.innerHTML;
+
+    // Minus needs to change the number from + to -
+    if(button === '-')
+    {
+        input = Number(input).toString();
+        if(input.includes('-'))
+        {
+            // remove the negative if it is already negative
+            input = input.slice(1);
+        }
+        else
+        {
+            input = '-' + input;
+        }
+
+        if(Number(input) === 0)
+        {
+            isFirstInput = true;
+        }
+        else
+        {
+            isFirstInput = false;
+        }
+    }
+                
     if(isFirstInput === true)
     {
         input = '';
@@ -74,17 +99,14 @@ function Input(button)
     // Need a flag so only 1 dot allowed
     if(button === '.')
         input += '.';
-    // Minus needs to change the number from + to -
-    if(button === '-')
-        if(input.includes('-'))
-            input = input.slice(1);
-        else
-            input = '-' + input;
     
-    let regexValidation = new RegExp("^-?[0-9?]*\.?[0-9?]*$");
+    let regexValidation = new RegExp("^-?(?!0{2,})[0-9?]*\.?[0-9?]*$");
     if(regexValidation.test(input) === false)
         return;
 
+    if(input === '')
+        input = '0';
+    
     calculatorInput.innerHTML = input;
 }
 
