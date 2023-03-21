@@ -124,7 +124,11 @@ function HandleOperator(opButton)
     {
         //remove the last character in the string
         let input = calculatorInput.innerHTML;
-        calculatorInput.innerHTML = input.substring(0, input.length-1);
+        input = input.substring(0, input.length-1);
+        if(input === '')
+            input = '0';
+
+        calculatorInput.innerHTML = input;
     }
 
     else if(calcOperator != '') // if pending operation
