@@ -98,19 +98,19 @@ function Clear()
 
 function HandleOperator(opButton)
 {
-    if(calcOperator != '') // if pending operation
-    {
-        let calcNumber2 = Number(calculatorInput.innerHTML);
-        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
-        calcOperator = '';
-        calculatorInput.innerHTML = calcNumber1.toString();
-    }
-
     if(opButton === 'delete')
     {
         //remove the last character in the string
         let input = calculatorInput.innerHTML;
         calculatorInput.innerHTML = input.substring(0, input.length-1);
+    }
+
+    else if(calcOperator != '') // if pending operation
+    {
+        let calcNumber2 = Number(calculatorInput.innerHTML);
+        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
+        calcOperator = '';
+        calculatorInput.innerHTML = calcNumber1.toString();
     }
 
     if(opButton === 'equals')
