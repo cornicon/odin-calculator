@@ -17,7 +17,16 @@
 
 .calculator-input {
     display: flex;
+    flex-direction: column;
     flex: 8;
+}
+
+.calculator-input > div {
+    display: flex;
+}
+
+.calculator-input > div > button {
+    flex: 1;
 }
 
 .calculator-operators {
