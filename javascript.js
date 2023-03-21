@@ -124,23 +124,25 @@ function HandleOperator(opButton)
     {
         //remove the last character in the string
         let input = calculatorInput.innerHTML;
-        input = input.substring(0, input.length-1);
-        if(input === '')
-            input = '0';
-
-        calculatorInput.innerHTML = input;
-    }
-
-    else if(calcOperator != '') // if pending operation
-    {
-        let calcNumber2 = Number(calculatorInput.innerHTML);
-        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
-        calcOperator = '';
-        calculatorInput.innerHTML = calcNumber1.toString();
+        calculatorInput.innerHTML = input.substring(0, input.length-1);
     }
 
     if(opButton === 'equals')
     {
+        let calcNumber2 = Number(calculatorInput.innerHTML);
+        if(calcOperator != '')
+        {
+            calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
+            calculatorInput.innerHTML = calcNumber1.toString();
+        }
+        isFirstInput = true;
+    }
+
+    else if(calcOperator != '')
+    {
+        let calcNumber2 = Number(calculatorInput.innerHTML);
+        calcNumber1 = Operate(calcOperator, calcNumber1, calcNumber2);
+        calculatorInput.innerHTML = calcNumber1.toString();
         isFirstInput = true;
     }
 
