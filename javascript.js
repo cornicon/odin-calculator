@@ -186,19 +186,20 @@ document.addEventListener('keydown', (event) => {
         Input(name);
     else if(name === 'Backspace')
         HandleOperator('delete');
-    else if(name === 'add')
-        HandleOperator('+');
-    else if(name === 'subtract')
-        HandleOperator('-');
-    else if(name === 'multiply')
-        HandleOperator('*');
-    else if(name === 'divide')
-        HandleOperator('/')
-    else if(name === '=')
-        HandleOperator('equal');
+    else if(name === '+')
+        HandleOperator('add');
+    else if(name === '-')
+        HandleOperator('subtract');
+    else if(name === '*')
+        HandleOperator('multiply');
+    else if(name === '/')
+        HandleOperator('divide')
+    else if(name === '=' || name === 'Enter')
+        HandleOperator('equals');
     else if(name === 'Escape')
         Clear();
     //alert(name);
     // Need to look into Event.preventDefault().
     // Something blocking +-/*=
+    event.preventDefault();
 });
